@@ -64,9 +64,9 @@ const TaskDetailsPage = () => {
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div>
             <p className="text-sm font-medium text-gray-500">Priority</p>
-            <span className={getPriorityColor(task.priority)} className="text-lg">
+            <button onClick={getPriorityColor(task.priority)} className="text-lg">
               {task.priority}
-            </span>
+            </button>
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500">Deadline</p>

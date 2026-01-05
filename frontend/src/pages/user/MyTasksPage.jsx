@@ -58,9 +58,9 @@ const MyTasksPage = () => {
               <h3 className="text-xl font-semibold mb-2">{task.title}</h3>
               <p className="text-gray-600 mb-4">{task.description}</p>
               <div className="space-y-2 mb-4">
-                <span className={getPriorityColor(task.priority)} className="px-2 py-1 rounded text-sm">
+                <button onclick={getPriorityColor(task.priority)} className="px-2 py-1 rounded text-sm">
                   {task.priority}
-                </span>
+                </button>
                 <p className="text-sm">Due: {new Date(task.deadline).toLocaleDateString()}</p>
                 <span className="text-sm font-medium">{indicator.icon}</span>
               </div>
