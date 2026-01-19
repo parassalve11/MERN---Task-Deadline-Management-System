@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import SidebarLayout from "../UI/sidebar/SidebarLayout";
 // import { FaGithub, FaTwitter } from "react-icons/fa";
 import { useLocation } from "react-router-dom"; // Import useLocation
+import LogOutButton from "../LogOutButton";
 
 function Layout({ children }) {
   const location = useLocation(); 
@@ -13,7 +14,7 @@ function Layout({ children }) {
   const menuItems = [
     { label: "Home", href: "/", icon: <Home className="h-5 w-5" /> },
     { label: "Dashboard", href: "/Dashboard", icon: <LayoutDashboard className="h-5 w-5" /> },
-    { label: "Notification", href: "/notification", icon: <Search className="h-5 w-5" /> },
+  
     {
       label: "Settings",
       href: "/settings",
@@ -67,6 +68,7 @@ function Layout({ children }) {
               <div className="text-xs text-gray-500 text-center">
                 © 2025 MyApp. All rights reserved.
               </div>
+              <LogOutButton />
             </div>
           }
         >
