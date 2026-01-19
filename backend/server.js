@@ -9,7 +9,7 @@ import { initializeSocket } from "./socket/socket.js";
 import authRoutes from "./routes/auth.route.js";
 import projectRoutes from "./routes/project.route.js";
 import taskRoutes from "./routes/task.route.js";
-import path from "path";
+
 
 dotenv.config();
 
@@ -35,7 +35,7 @@ const server = http.createServer(app);
 
 const io = initializeSocket(server);
 
-const __dirname = path.resolve();
+
 
 app.use((req, res, next) => {
   req.io = io;
@@ -47,13 +47,6 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/tasks", taskRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-  });
-}
 
 server.listen(PORT, () => {
   console.log("Server is running on", PORT);
