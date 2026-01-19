@@ -1,8 +1,8 @@
+// backend/server.js
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./lib/db.js";
-// import authRouters from "./routers/auth.route.js";
 import cors from "cors";
 import http from "http";
 import { initializeSocket } from "./socket/socket.js";
@@ -17,11 +17,14 @@ const app = express();
 
 app.use(cookieParser());
 
+const allowedOrigins = [process.env.CLIENT_URL || "", "http://localhost:4173"]
+  .filter(Boolean);
+
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL, "http://localhost:4173/"],
+    origin: process.env.CLIENT_URL ,
     credentials: true,
-  }),
+  })
 );
 
 const PORT = process.env.PORT || 5000;
@@ -53,6 +56,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 server.listen(PORT, () => {
-  console.log("Server is Running on", PORT);
+  console.log("Server is running on", PORT);
   connectDB();
 });

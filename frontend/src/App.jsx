@@ -1,3 +1,4 @@
+// src/App.jsx
 import Layout from "./components/layout/Layout.jsx";
 import { Navigate, Route, Routes } from "react-router-dom";
 import useUserStore from "./store/useUserStore.js";
@@ -20,8 +21,9 @@ import MyTasksPage from "./pages/user/MyTasksPage.jsx";
 import TaskDetailsPage from "./pages/user/TaskDetailsPage.jsx";
 
 function App() {
-  const { isAuthenticated, user } = useUserStore(); 
-  // assume user.role = "admin" | "intern"
+  const { user,isAuthenticated } = useUserStore();
+  // protect from null access
+  console.log("user", user?.name);
 
   return (
     <Layout>
@@ -52,9 +54,7 @@ function App() {
         <Route
           path="/admin/projects"
           element={
-            isAuthenticated && user?.role === "Admin"
-              ? <AdminProjectsPage />
-              : <Navigate to="/" />
+            isAuthenticated && user?.role === "Admin" ? <AdminProjectsPage /> : <Navigate to="/" />
           }
         />
 
@@ -70,29 +70,19 @@ function App() {
         <Route
           path="/admin/tasks"
           element={
-            isAuthenticated && user?.role === "Admin"
-              ? <AdminTasksPage />
-              : <Navigate to="/" />
+            isAuthenticated && user?.role === "Admin" ? <AdminTasksPage /> : <Navigate to="/" />
           }
         />
 
         {/* ---------- Intern (User) Routes ---------- */}
         <Route
           path="/my-tasks"
-          element={
-            isAuthenticated && user?.role === "User"
-              ? <MyTasksPage />
-              : <Navigate to="/" />
-          }
+          element={isAuthenticated && user?.role === "User" ? <MyTasksPage /> : <Navigate to="/" />}
         />
 
         <Route
           path="/my-tasks/:taskId"
-          element={
-            isAuthenticated && user?.role === "User"
-              ? <TaskDetailsPage />
-              : <Navigate to="/" />
-          }
+          element={isAuthenticated && user?.role === "User" ? <TaskDetailsPage /> : <Navigate to="/" />}
         />
 
         {/* ---------- Fallback ---------- */}

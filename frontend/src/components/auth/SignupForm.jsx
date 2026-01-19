@@ -131,7 +131,7 @@ export default function SignupForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full bg-[#fff1ad] hover:bg-[#e6d89c]  text-black"
+           className="w-full bg-blue-500 font-semibold  text-white px-3 py-2 border rounded-2xl"
           >
             {isPending ? <Loader2 className="animate-spin size-4" /> : "SignUp"}
           </button>

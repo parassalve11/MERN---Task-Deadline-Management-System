@@ -14,6 +14,7 @@ export default function AuthInit({ children }) {
     const verifyAuth = async () => {
       const result = await checkUserAuth();
 
+     console.log("result",result);
      
       
       if (result.isAuthenticated) {

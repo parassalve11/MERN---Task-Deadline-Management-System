@@ -13,11 +13,15 @@ export default function  SignupPage(){
             <div className="w-full space-y-10 p-10 overflow-y-auto md:1/2">
                 <div className="text-center space-y-1">
                         <h1 className="font-bold text-3xl">SignUp</h1>
+                        <div className="text-xs text-gray-300 font-extrabold">
+                         <p>admin:parassalve50@gmail.com</p>
+                        <p>password:tyson157</p>
+                       </div>
                 </div>
                 <div className="space-y-5">
                    
                     <SignupForm />
-                    <Link href={'/signin'} className="font-semibold ">
+                    <Link to={'/signin'} className="font-semibold ">
                      have an Account ? <span className="text-[#3B82F6] font-bold">SignIn</span>
                     </Link>
                 </div>
